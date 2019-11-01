@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackgroundTaskQueue.Core
 {
-	public class BackgroundTaskQueue : IBackgroundTaskQueue, IDisposable
+	public class BackgroundTaskQueue : IBackgroundTaskQueue
 	{
 		public bool IsDisposed { get; private set; }
 		private readonly ConcurrentQueue<Ticket> _taskQueue;

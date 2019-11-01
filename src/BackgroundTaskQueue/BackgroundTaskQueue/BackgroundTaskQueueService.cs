@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BackgroundTaskQueue.Core
 {
-	public class BackgroundQueueService : BackgroundService
+	public class BackgroundTaskQueueService : BackgroundService
 	{
 		public IBackgroundTaskQueue TaskQueue { get; }
-		private readonly ILogger<BackgroundQueueService> _logger;
+		private readonly ILogger<BackgroundTaskQueueService> _logger;
 
-		public BackgroundQueueService(ILogger<BackgroundQueueService> logger, IBackgroundTaskQueue taskQueue)
+		public BackgroundTaskQueueService(ILogger<BackgroundTaskQueueService> logger, IBackgroundTaskQueue taskQueue)
 		{
 			_logger = logger;
 			TaskQueue = taskQueue;
@@ -19,14 +19,14 @@ namespace BackgroundTaskQueue.Core
 
 		public override Task StartAsync(CancellationToken ct)
 		{
-			_logger.LogInformation($"Background Service {nameof(BackgroundQueueService)} is starting...");
+			_logger.LogInformation($"Background Service {nameof(BackgroundTaskQueueService)} is starting...");
 
 			return base.StartAsync(ct);
 		}
 
 		protected override async Task ExecuteAsync(CancellationToken ct)
 		{
-			_logger.LogInformation($"Background Service {nameof(BackgroundQueueService)} is running.");
+			_logger.LogInformation($"Background Service {nameof(BackgroundTaskQueueService)} is running.");
 
 			while (!ct.IsCancellationRequested)
 			{
@@ -46,7 +46,7 @@ namespace BackgroundTaskQueue.Core
 
 		public override Task StopAsync(CancellationToken ct)
 		{
-			_logger.LogInformation($"Background Service {nameof(BackgroundQueueService)} is stopping...");
+			_logger.LogInformation($"Background Service {nameof(BackgroundTaskQueueService)} is stopping...");
 
 			return base.StopAsync(ct);
 		}
