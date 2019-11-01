@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTaskQueue.Core.Generic.Models
+namespace BackgroundQueue.Generic.Models
 {
 	public abstract class Ticket<T> : TicketBase
 	{

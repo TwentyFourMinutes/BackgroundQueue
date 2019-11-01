@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTaskQueue.Core.Models
+namespace BackgroundQueue.Models
 {
 	internal class BaseTicket : Ticket
 	{

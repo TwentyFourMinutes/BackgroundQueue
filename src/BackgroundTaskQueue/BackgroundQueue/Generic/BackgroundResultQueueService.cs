@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTaskQueue.Core.Generic
+namespace BackgroundQueue.Generic
 {
 	public class BackgroundResultQueueService : BackgroundService
 	{

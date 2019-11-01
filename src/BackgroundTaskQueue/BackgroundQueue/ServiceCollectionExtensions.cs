@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace BackgroundTaskQueue.Core
+namespace BackgroundQueue
 {
 	public static partial class ServiceCollectionExtensions
 	{

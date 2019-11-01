@@ -1,9 +1,9 @@
-﻿using BackgroundTaskQueue.Core.Models;
+﻿using BackgroundQueue.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTaskQueue.Core
+namespace BackgroundQueue
 {
 	public interface IBackgroundTaskQueue : IDisposable
 	{

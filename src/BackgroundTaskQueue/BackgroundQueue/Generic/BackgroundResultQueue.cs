@@ -1,10 +1,10 @@
-﻿using BackgroundTaskQueue.Core.Generic.Models;
+﻿using BackgroundQueue.Generic.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BackgroundTaskQueue.Core.Generic
+namespace BackgroundQueue.Generic
 {
 	public class BackgroundResultQueue : IBackgroundResultQueue
 	{
