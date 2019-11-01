@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,10 +8,10 @@ namespace BackgroundTaskQueue.Core
 {
 	public class BackgroundQueueService : BackgroundService
 	{
-		public BackgroundTaskQueue TaskQueue { get; }
+		public IBackgroundTaskQueue TaskQueue { get; }
 		private readonly ILogger<BackgroundQueueService> _logger;
 
-		public BackgroundQueueService(ILogger<BackgroundQueueService> logger, BackgroundTaskQueue taskQueue)
+		public BackgroundQueueService(ILogger<BackgroundQueueService> logger, IBackgroundTaskQueue taskQueue)
 		{
 			_logger = logger;
 			TaskQueue = taskQueue;
@@ -23,7 +21,7 @@ namespace BackgroundTaskQueue.Core
 		{
 			_logger.LogInformation($"Background Service {nameof(BackgroundQueueService)} is starting...");
 
-			return base.StartAsync(ct);	
+			return base.StartAsync(ct);
 		}
 
 		protected override async Task ExecuteAsync(CancellationToken ct)
@@ -40,6 +38,7 @@ namespace BackgroundTaskQueue.Core
 				}
 				catch (Exception ex)
 				{
+					ticket.OnException(ex);
 					_logger.LogError(ex, $"Error occurred while executing {nameof(ticket)}.");
 				}
 			}
@@ -49,7 +48,7 @@ namespace BackgroundTaskQueue.Core
 		{
 			_logger.LogInformation($"Background Service {nameof(BackgroundQueueService)} is stopping...");
 
-			return base.StopAsync(ct);	
+			return base.StopAsync(ct);
 		}
 
 		public override void Dispose()
