@@ -8,10 +8,10 @@ namespace BackgroundQueue.Generic
 {
 	public class BackgroundResultQueueService : BackgroundService
 	{
-		public BackgroundResultQueue ResultQueue { get; }
+		public IBackgroundResultQueue ResultQueue { get; }
 		private readonly ILogger<BackgroundResultQueueService> _logger;
 
-		public BackgroundResultQueueService(ILogger<BackgroundResultQueueService> logger, BackgroundResultQueue taskQueue)
+		public BackgroundResultQueueService(ILogger<BackgroundResultQueueService> logger, IBackgroundResultQueue taskQueue)
 		{
 			_logger = logger;
 			ResultQueue = taskQueue;
