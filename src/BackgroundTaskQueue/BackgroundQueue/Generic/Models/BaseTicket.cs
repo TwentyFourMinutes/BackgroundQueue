@@ -9,7 +9,6 @@ namespace BackgroundQueue.Generic.Models
 		private readonly Func<CancellationToken, Task> _task;
 		private readonly Action<Exception> _exception;
 
-
 		internal BaseTicket(Func<CancellationToken, Task> task, Action<Exception> exception)
 		{
 			_task = task;

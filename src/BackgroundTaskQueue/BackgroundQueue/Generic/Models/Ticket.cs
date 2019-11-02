@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace BackgroundQueue.Generic.Models
 {
+	/// <summary>
+	/// Inherit from this class, if you want to create a new Ticket, which should get enqueued in a BackgroundResultQueue.
+	/// </summary>
 	public abstract class Ticket : TicketBase
 	{
 		private readonly TaskCompletionSource<object?> _completionSource;
@@ -14,6 +17,9 @@ namespace BackgroundQueue.Generic.Models
 			_completionSource = new TaskCompletionSource<object?>();
 		}
 
+		/// <summary>
+		/// Contains the core logic of the Ticket.
+		/// </summary>
 		public abstract Task ExecuteAsync(CancellationToken ct);
 
 		internal override async Task ProccessAsync(CancellationToken ct)
@@ -33,6 +39,9 @@ namespace BackgroundQueue.Generic.Models
 		}
 	}
 
+	/// <summary>
+	/// Inherit from this class, if you want to create a new Ticket, which should get enqueued in a BackgroundResultQueue.
+	/// </summary>
 	public abstract class Ticket<T> : TicketBase
 	{
 		private readonly TaskCompletionSource<T> _completionSource;

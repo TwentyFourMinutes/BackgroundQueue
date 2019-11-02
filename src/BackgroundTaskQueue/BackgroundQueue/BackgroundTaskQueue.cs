@@ -1,4 +1,4 @@
-using BackgroundQueue.Models;
+﻿using BackgroundQueue.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -18,15 +18,18 @@ namespace BackgroundQueue
 			_signal = new SemaphoreSlim(0);
 		}
 
+		/// <inheritdoc/>
 		public void Enqueue(Func<CancellationToken, Task> task)
 			=> Enqueue(task, exception => { });
 
+		/// <inheritdoc/>
 		public void Enqueue(Func<CancellationToken, Task> task, Action<Exception> exception)
 		{
 			Enqueue(new BaseTicket(task, exception));
 			_signal.Release();
 		}
 
+		/// <inheritdoc/>
 		public void Enqueue(Ticket ticket)
 		{
 			_taskQueue.Enqueue(ticket);
@@ -34,6 +37,7 @@ namespace BackgroundQueue
 			ticket.Enqueued();
 		}
 
+		/// <inheritdoc/>
 		public async Task<Ticket> DequeueAsync(CancellationToken ct)
 		{
 			await _signal.WaitAsync(ct);

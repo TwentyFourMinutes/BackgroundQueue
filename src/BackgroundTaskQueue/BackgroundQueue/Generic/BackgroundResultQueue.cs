@@ -1,4 +1,4 @@
-using BackgroundQueue.Generic.Models;
+﻿using BackgroundQueue.Generic.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -18,12 +18,15 @@ namespace BackgroundQueue.Generic
 			_signal = new SemaphoreSlim(0);
 		}
 
+		/// <inheritdoc/>
 		public Task ProcessInQueueAsync(Func<CancellationToken, Task> task)
 			=> ProcessInQueueAsync(task, ct => { });
 
+		/// <inheritdoc/>
 		public Task ProcessInQueueAsync(Func<CancellationToken, Task> task, Action<Exception> exception)
 			=> ProcessInQueueAsync(new BaseTicket(task, exception));
 
+		/// <inheritdoc/>
 		public Task ProcessInQueueAsync(Ticket ticket)
 		{
 			_taskQueue.Enqueue(ticket);
@@ -33,12 +36,15 @@ namespace BackgroundQueue.Generic
 			return ticket.SourceTask;
 		}
 
+		/// <inheritdoc/>
 		public Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task)
 			=> ProcessInQueueAsync(task, ct => { });
 
+		/// <inheritdoc/>
 		public Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task, Action<Exception> exception)
 			=> ProcessInQueueAsync(new BaseTicket<T>(task, exception));
 
+		/// <inheritdoc/>
 		public Task<T> ProcessInQueueAsync<T>(Ticket<T> ticket)
 		{
 			_taskQueue.Enqueue(ticket);
@@ -48,6 +54,7 @@ namespace BackgroundQueue.Generic
 			return ticket.SourceTask;
 		}
 
+		/// <inheritdoc/>
 		public async Task<TicketBase> DequeueAsync(CancellationToken ct)
 		{
 			await _signal.WaitAsync(ct);
