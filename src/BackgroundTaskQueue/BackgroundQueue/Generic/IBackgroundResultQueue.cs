@@ -20,7 +20,7 @@ namespace BackgroundQueue.Generic
 		/// <param name="exception">A action which will get called, if the task fails.</param>
 		Task ProcessInQueueAsync(Func<CancellationToken, Task> task, Action<Exception> exception);
 		/// <summary>
-		/// Adds a new <see cref="Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+		/// Adds a new <see cref="Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the ticket got processed.
 		/// </summary>
 		/// <param name="ticket">The Ticket which will get enqueued.</param>
 		Task ProcessInQueueAsync(Ticket ticket);
@@ -39,7 +39,7 @@ namespace BackgroundQueue.Generic
 		Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task, Action<Exception> exception);
 
 		/// <summary>
-		/// Adds a new <see cref="Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+		/// Adds a new <see cref="Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the ticket got processed.
 		/// </summary>
 		/// <param name="ticket">The Ticket which will get enqueued.</param>
 		Task<T> ProcessInQueueAsync<T>(Ticket<T> ticket);
