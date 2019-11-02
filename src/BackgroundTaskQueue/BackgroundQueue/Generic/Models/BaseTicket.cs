@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BackgroundQueue.Generic.Models
 {
-	public class BaseTicket : Ticket
+	internal class BaseTicket : Ticket
 	{
 		private readonly Func<CancellationToken, Task> _task;
 		private readonly Action<Exception> _exception;
@@ -23,7 +23,7 @@ namespace BackgroundQueue.Generic.Models
 			=> _exception(ex);
 	}
 
-	public class BaseTicket<T> : Ticket<T>
+	internal class BaseTicket<T> : Ticket<T>
 	{
 		private readonly Func<CancellationToken, Task<T>> _task;
 		private readonly Action<Exception> _exception;

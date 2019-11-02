@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BackgroundQueue.Generic.Models
@@ -17,9 +18,18 @@ namespace BackgroundQueue.Generic.Models
 
 		internal override async Task ProccessAsync(CancellationToken ct)
 		{
-			await ExecuteAsync(ct);
-
-			_completionSource.TrySetResult(default);
+			try
+			{
+				await ExecuteAsync(ct);
+			}
+			catch
+			{
+				throw;
+			}
+			finally
+			{
+				_completionSource.TrySetResult(default);
+			}
 		}
 	}
 
@@ -37,9 +47,20 @@ namespace BackgroundQueue.Generic.Models
 
 		internal override async Task ProccessAsync(CancellationToken ct)
 		{
-			var result = await ExecuteAsync(ct);
+			T result = default!;
 
-			_completionSource.TrySetResult(result);
+			try
+			{
+				result = await ExecuteAsync(ct);
+			}
+			catch
+			{
+				throw;
+			}
+			finally
+			{
+				_completionSource.TrySetResult(result);
+			}
 		}
 	}
 }
