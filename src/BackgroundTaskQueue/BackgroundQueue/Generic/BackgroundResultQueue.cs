@@ -18,13 +18,27 @@ namespace BackgroundQueue.Generic
 			_signal = new SemaphoreSlim(0);
 		}
 
-		public Task<T> ProcessInQueue<T>(Func<CancellationToken, Task<T>> task)
-			=> ProcessInQueue(task, ct => { });
+		public Task ProcessInQueueAsync(Func<CancellationToken, Task> task)
+			=> ProcessInQueueAsync(task, ct => { });
 
-		public Task<T> ProcessInQueue<T>(Func<CancellationToken, Task<T>> task, Action<Exception> exception)
-			=> ProcessInQueue(new BaseTicket<T>(task, exception));
+		public Task ProcessInQueueAsync(Func<CancellationToken, Task> task, Action<Exception> exception)
+			=> ProcessInQueueAsync(new BaseTicket(task, exception));
 
-		public Task<T> ProcessInQueue<T>(Ticket<T> ticket)
+		public Task ProcessInQueueAsync(Ticket ticket)
+		{
+			_taskQueue.Enqueue(ticket);
+			_signal.Release();
+
+			return ticket.SourceTask;
+		}
+
+		public Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task)
+			=> ProcessInQueueAsync(task, ct => { });
+
+		public Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task, Action<Exception> exception)
+			=> ProcessInQueueAsync(new BaseTicket<T>(task, exception));
+
+		public Task<T> ProcessInQueueAsync<T>(Ticket<T> ticket)
 		{
 			_taskQueue.Enqueue(ticket);
 			_signal.Release();

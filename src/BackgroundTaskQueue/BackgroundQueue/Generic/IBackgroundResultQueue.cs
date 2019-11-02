@@ -7,9 +7,14 @@ namespace BackgroundQueue.Generic
 {
 	public interface IBackgroundResultQueue : IDisposable
 	{
-		Task<T> ProcessInQueue<T>(Func<CancellationToken, Task<T>> task);
+		Task ProcessInQueueAsync(Func<CancellationToken, Task> task);
+		Task ProcessInQueueAsync(Func<CancellationToken, Task> task, Action<Exception> exception);
+		Task ProcessInQueueAsync(Ticket ticket);
 
-		Task<T> ProcessInQueue<T>(Ticket<T> ticket);
+		Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task);
+		Task<T> ProcessInQueueAsync<T>(Func<CancellationToken, Task<T>> task, Action<Exception> exception);
+
+		Task<T> ProcessInQueueAsync<T>(Ticket<T> ticket);
 
 		Task<TicketBase> DequeueAsync(CancellationToken ct);
 	}
