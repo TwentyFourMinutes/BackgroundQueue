@@ -1,4 +1,4 @@
-﻿using BackgroundQueue.Models;
+using BackgroundQueue.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -23,15 +23,15 @@ namespace BackgroundQueue
 
 		public void Enqueue(Func<CancellationToken, Task> task, Action<Exception> exception)
 		{
-			_taskQueue.Enqueue(new BaseTicket(task, exception));
+			Enqueue(new BaseTicket(task, exception));
 			_signal.Release();
 		}
 
 		public void Enqueue(Ticket ticket)
 		{
-			ticket.Enqueued();
 			_taskQueue.Enqueue(ticket);
 			_signal.Release();
+			ticket.Enqueued();
 		}
 
 		public async Task<Ticket> DequeueAsync(CancellationToken ct)

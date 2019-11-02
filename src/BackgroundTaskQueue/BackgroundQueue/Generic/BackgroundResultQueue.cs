@@ -1,4 +1,4 @@
-﻿using BackgroundQueue.Generic.Models;
+using BackgroundQueue.Generic.Models;
 using System;
 using System.Collections.Concurrent;
 using System.Threading;
@@ -28,6 +28,7 @@ namespace BackgroundQueue.Generic
 		{
 			_taskQueue.Enqueue(ticket);
 			_signal.Release();
+			ticket.Enqueued();
 
 			return ticket.SourceTask;
 		}
@@ -42,6 +43,7 @@ namespace BackgroundQueue.Generic
 		{
 			_taskQueue.Enqueue(ticket);
 			_signal.Release();
+			ticket.Enqueued();
 
 			return ticket.SourceTask;
 		}
