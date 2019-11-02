@@ -33,12 +33,12 @@ First up, you'll need to download the `BackgroundQueue` nuget package from one o
    public class HomeController : Controller
    {
    	private readonly IBackgroundTaskQueue _taskQueue;
-       //Or
+      //Or
    	private readonly IBackgroundResultQueue _resultQueue;
        
    	public DashboardController(IBackgroundTaskQueue taskQueue
-   							//Or
-   							IBackgroundResultQueue resultQueue)
+   							         //Or
+   							         IBackgroundResultQueue resultQueue)
    	{
    		_taskQueue = taskQueue;
    		//Or
@@ -54,15 +54,15 @@ First up, you'll need to download the `BackgroundQueue` nuget package from one o
    {
    	_taskQueue.Enqueue(async token =>
    	{
-   		await EmailSender.SendEmailAsync("Somone visited our website!");
-   	}); // Will return immediately.
+   	   await EmailSender.SendEmailAsync("Somone visited our website!");
+   	});   // Will return immediately.
        
        //Or
        
-       await _backgroundQueue.ProcessInQueueAsync(async token =>
+      await _backgroundQueue.ProcessInQueueAsync(async token =>
    	{
-   		// I need to wait for any other items in this queue first!
-   	}); // Will continue after all other items, which are in front of it are processed.
+         // I need to wait for any other items in this queue first!
+   	});   // Will continue after all other items, which are in front of it are processed.
        
    	return View();
    }
