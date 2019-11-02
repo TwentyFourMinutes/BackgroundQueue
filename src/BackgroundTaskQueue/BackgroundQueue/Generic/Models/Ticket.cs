@@ -5,12 +5,12 @@ namespace BackgroundQueue.Generic.Models
 {
 	public abstract class Ticket : TicketBase
 	{
-		private readonly TaskCompletionSource<object> _completionSource;
-		internal Task<bool> SourceTask { get => _completionSource.Task; }
+		private readonly TaskCompletionSource<object?> _completionSource;
+		internal Task<object?> SourceTask { get => _completionSource.Task; }
 
 		public Ticket()
 		{
-			_completionSource = new TaskCompletionSource<object>();
+			_completionSource = new TaskCompletionSource<object?>();
 		}
 
 		public abstract Task ExecuteAsync(CancellationToken ct);
