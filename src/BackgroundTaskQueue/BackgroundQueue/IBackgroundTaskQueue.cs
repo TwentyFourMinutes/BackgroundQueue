@@ -1,4 +1,4 @@
-﻿using BackgroundQueue.Models;
+using BackgroundQueue.Models;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +8,8 @@ namespace BackgroundQueue
 	public interface IBackgroundTaskQueue : IDisposable
 	{
 		void Enqueue(Func<CancellationToken, Task> task);
+
+		void Enqueue(Func<CancellationToken, Task> task, Action<Exception> exception);
 
 		void Enqueue(Ticket ticket);
 
