@@ -20,10 +20,10 @@ First up, you'll need to download the `BackgroundQueue` nuget package from one o
    ```c#
    public void ConfigureServices(IServiceCollection services)
    {
-       [...]
+      [...]
    	services.AddBackgroundTaskQueue();
-       //Or
-       services.AddBackgroundResultQueue();
+      //Or
+      services.AddBackgroundResultQueue();
    }
    ```
 
