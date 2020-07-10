@@ -1,6 +1,6 @@
 # BackgroundQueue
 
-<a href="https://www.nuget.org/packages/BackgroundQueue"><img alt="Nuget" src="https://img.shields.io/nuget/v/BackgroundQueue"></a><a href="https://www.nuget.org/packages/BackgroundQueue"><img alt="Nuget" src="https://img.shields.io/nuget/dt/BackgroundQueue"></a><img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/TwentyFourMinutes/BackgroundQueue">
+<a href="https://www.nuget.org/packages/BackgroundQueue"><img alt="Nuget" src="https://img.shields.io/nuget/v/BackgroundQueue"></a> <a href="https://www.nuget.org/packages/BackgroundQueue"><img alt="Nuget" src="https://img.shields.io/nuget/dt/BackgroundQueue"></a> <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/TwentyFourMinutes/BackgroundQueue">
 
 BackgroundQueue is a simple way to queue background Tasks in ASP.Net Core and in .Net in general.
 You can download BackgroundQueue either from the Nuget Package Manager or from the official [nuget.org](https://www.nuget.org/packages/BackgroundQueue) website.
