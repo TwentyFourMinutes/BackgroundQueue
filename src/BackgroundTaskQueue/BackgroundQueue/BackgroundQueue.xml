@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BackgroundQueue</name>
+    </assembly>
+    <members>
+        <member name="M:BackgroundQueue.BackgroundTaskQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.BackgroundTaskQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Action{System.Exception})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.BackgroundTaskQueue.Enqueue(BackgroundQueue.Models.Ticket)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.BackgroundTaskQueue.DequeueAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Action{System.Exception})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync(BackgroundQueue.Generic.Models.Ticket)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.Action{System.Exception})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.ProcessInQueueAsync``1(BackgroundQueue.Generic.Models.Ticket{``0})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.BackgroundResultQueue.DequeueAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Action{System.Exception})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+            <param name="exception">A action which will get called, if the task fails.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync(BackgroundQueue.Generic.Models.Ticket)">
+            <summary>
+            Adds a new <see cref="T:BackgroundQueue.Generic.Models.Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the ticket got processed.
+            </summary>
+            <param name="ticket">The Ticket which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync``1(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task{``0}},System.Action{System.Exception})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return when the task got processed.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+            <param name="exception">A action which will get called, if the task fails.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.ProcessInQueueAsync``1(BackgroundQueue.Generic.Models.Ticket{``0})">
+            <summary>
+            Adds a new <see cref="T:BackgroundQueue.Generic.Models.Ticket"/> to the Queue, which will get processed in a background thread. This method will return when the ticket got processed.
+            </summary>
+            <param name="ticket">The Ticket which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.Generic.IBackgroundResultQueue.DequeueAsync(System.Threading.CancellationToken)">
+            <summary>
+            Dequeues a <see cref="T:BackgroundQueue.Generic.Models.TicketBase"/> from the <see cref="T:BackgroundQueue.IBackgroundTaskQueue"/>.
+            </summary>
+            <returns>Returns the enqueued <see cref="T:BackgroundQueue.Generic.Models.TicketBase"/>.</returns>
+        </member>
+        <member name="T:BackgroundQueue.Generic.Models.Ticket">
+            <summary>
+            Inherit from this class, if you want to create a new Ticket, which should get enqueued in a BackgroundResultQueue.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Generic.Models.Ticket.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Contains the core logic of the Ticket.
+            </summary>
+        </member>
+        <member name="T:BackgroundQueue.Generic.Models.Ticket`1">
+            <summary>
+            Inherit from this class, if you want to create a new Ticket, which should get enqueued in a BackgroundResultQueue.
+            </summary>
+        </member>
+        <member name="T:BackgroundQueue.Generic.Models.TicketBase">
+            <summary>
+            This class is only for internal use.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Generic.Models.TicketBase.Enqueued">
+            <summary>
+            Gets called when the <see cref="T:BackgroundQueue.Generic.Models.TicketBase"/> gets enqueued.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Generic.Models.TicketBase.OnException(System.Exception)">
+            <summary>
+            Gets called when the <see cref="!:ExecuteAsync"/> method errors out.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Generic.ServiceCollectionExtensions.AddBackgroundResultQueue(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the required BackgroundResultQueue services.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.IBackgroundTaskQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return immediately.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.IBackgroundTaskQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Action{System.Exception})">
+            <summary>
+            Adds a new <see cref="T:System.Threading.Tasks.Task"/> to the Queue, which will get processed in a background thread. This method will return immediately.
+            </summary>
+            <param name="task">The Task which will get enqueued.</param>
+            <param name="exception">A action which will get called, if the task fails.</param>
+        </member>
+        <member name="M:BackgroundQueue.IBackgroundTaskQueue.Enqueue(BackgroundQueue.Models.Ticket)">
+            <summary>
+            Adds a new <see cref="T:BackgroundQueue.Models.Ticket"/> to the Queue, which will get processed in a background thread. This method will return immediately.
+            </summary>
+            <param name="ticket">The ticket which will get enqueued.</param>
+        </member>
+        <member name="M:BackgroundQueue.IBackgroundTaskQueue.DequeueAsync(System.Threading.CancellationToken)">
+            <summary>
+            Dequeues a <see cref="T:BackgroundQueue.Models.Ticket"/> from the <see cref="T:BackgroundQueue.IBackgroundTaskQueue"/>.
+            </summary>
+            <returns>Returns the enqueued <see cref="T:BackgroundQueue.Models.Ticket"/>.</returns>
+        </member>
+        <member name="T:BackgroundQueue.Models.Ticket">
+            <summary>
+            Inherit from this class, if you want to create a new Ticket, which should get enqueued in a BackgroundTaskQueue.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Models.Ticket.Enqueued">
+            <summary>
+            Gets called when the <see cref="T:BackgroundQueue.Models.BaseTicket"/> gets enqueued.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Models.Ticket.OnException(System.Exception)">
+            <summary>
+            Gets called when the <see cref="M:BackgroundQueue.Models.Ticket.ExecuteAsync(System.Threading.CancellationToken)"/> method errors out.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.Models.Ticket.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Contains the core logic of the Ticket.
+            </summary>
+        </member>
+        <member name="M:BackgroundQueue.ServiceCollectionExtensions.AddBackgroundTaskQueue(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the required BackgroundTaskQueue services.
+            </summary>
+        </member>
+    </members>
+</doc>

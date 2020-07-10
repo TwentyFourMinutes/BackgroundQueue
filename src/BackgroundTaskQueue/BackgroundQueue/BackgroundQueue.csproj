@@ -1,22 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.2</Version>
     <Authors>Twenty</Authors>
-    <Company>Tweny</Company>
+    <Company>Twenty</Company>
     <PackageId>BackgroundQueue</PackageId>
-    <Description>BackgroundQueue is a simple way to queue background Tasks in ASP.Net Core and in .Net in general</Description>
+    <Description>BackgroundQueue is a simple way to queue background Tasks in ASP.Net Core and in .Net in general.</Description>
     <Copyright>Twenty</Copyright>
     <RepositoryUrl>https://github.com/TwentyFourMinutes/BackgroundQueue</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>queue background backgroundqueue aspnetcore aspnet</PackageTags>
-    <Copyright>Copyright ©2019 Twenty</Copyright>
+    <Copyright>Copyright ©2020 Twenty</Copyright>
     <Title>BackgroundQueue</Title>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>BackgroundQueue.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

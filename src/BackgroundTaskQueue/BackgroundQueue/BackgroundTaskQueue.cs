@@ -26,7 +26,6 @@ namespace BackgroundQueue
 		public void Enqueue(Func<CancellationToken, Task> task, Action<Exception> exception)
 		{
 			Enqueue(new BaseTicket(task, exception));
-			_signal.Release();
 		}
 
 		/// <inheritdoc/>

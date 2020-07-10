@@ -10,7 +10,7 @@ namespace BackgroundQueue.Models
 	public abstract class Ticket
 	{
 		/// <summary>
-		/// Gets called when the <see cref="TicketBase"/> gets enqueued.
+		/// Gets called when the <see cref="BaseTicket"/> gets enqueued.
 		/// </summary>
 		public virtual void Enqueued() { }
 
